@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0F6E56">
+<meta name="description" content="给 ADHD 的 5 分钟任务启动器：微启动、摆烂模式、即时反馈和每日复盘。">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" type="image/png" href="icon.png">
@@ -12,7 +13,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="时锚">
 <meta name="mobile-web-app-capable" content="yes">
-<title>时锚 · 效率推进器</title>
+<title>时锚 · ADHD 5分钟启动器</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   :root { --bg:#FAFAF7; --card:#FFFFFF; --ink:#2C2C2A; --ink-2:#5F5E5A; --ink-3:#888780; --line:#E8E6DF; --teal:#0F6E56; --teal-bg:#E1F5EE; --blue:#185FA5; --blue-bg:#E6F1FB; --amber:#BA7517; --amber-bg:#FAEEDA; --coral:#D85A30; --coral-bg:#FAECE7; --red:#A32D2D; }
@@ -120,11 +121,11 @@
 </style>
 </head>
 <body>
-<div id="diag">JS 加载中…</div>
+<div id="diag" style="display:none">JS 加载中…</div>
 <div class="flash" id="flash"></div>
 
 <div class="phone">
-  <header><div class="h-row"><div class="h-date" id="hDate">今天</div><div class="h-sub">效率推进器</div></div></header>
+  <header><div class="h-row"><div class="h-date" id="hDate">今天</div><div class="h-sub">ADHD 5分钟启动器</div></div></header>
 
   <main>
     <div class="view active" id="view-today">
@@ -156,7 +157,7 @@
       <div class="review-sec"><div class="ttl">今日完成墙</div><div class="v" id="reviewWall">0 / 20 格</div></div>
       <div class="review-sec"><div class="ttl">今日做了什么</div><div class="v" id="reviewDone">还没开始</div></div>
       <div class="review-sec"><div class="ttl">反馈强度</div><div class="fb-row"><button class="fb-opt" data-fb="quiet">安静</button><button class="fb-opt active" data-fb="standard">标准</button><button class="fb-opt" data-fb="strong">强刺激</button></div><div style="font-size:10px;color:var(--ink-3);margin-top:6px;line-height:1.5;">安静=只亮格+贝壳 / 标准=+跳动+轻音 / 强刺激=+震动+闪光</div></div>
-      <div class="review-sec"><div class="ttl">设置 · 版本 v7</div><button class="btn-clear" id="btnClearCache">清空全部缓存并重载</button></div>
+      <div class="review-sec"><div class="ttl">设置 · 版本 v11</div><button class="btn-clear" id="btnClearCache">清空全部缓存并重载</button></div>
     </div>
   </main>
 
@@ -173,12 +174,12 @@
 
 <script>
 window.onerror = function(msg,src,line,col,err){ var d=document.getElementById("diag"); if(d){ d.className="err"; d.textContent="错误: "+msg+" (行"+line+")"; } return false; };
-function diag(s,ok){ var d=document.getElementById("diag"); if(d){ d.className=ok?"ok":""; d.textContent=s; } }
+function diag(s,ok){ var d=document.getElementById("diag"); if(d){ d.style.display="block"; d.className=ok?"ok":""; d.textContent=s; } }
 
 (function(){
   diag("启动…");
   function pad2(n){ n=String(n); while(n.length<2) n="0"+n; return n; }
-  var STORAGE_KEY = "timeAnchor.v5";
+  var STORAGE_KEY = "timeAnchor.v11";
   var today = new Date();
   var dateStr = today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate());
 

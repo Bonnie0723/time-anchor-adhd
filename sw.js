@@ -1,6 +1,6 @@
 // 时锚 service worker —— 离线缓存
-var CACHE = "time-anchor-v10";
-var ASSETS = ["./index.html?v=v10", "./icon.svg", "./icon.png", "./manifest.json", "./sw.js"];
+var CACHE = "time-anchor-v11";
+var ASSETS = ["./", "./index.html", "./index.html?v=v11", "./icon.svg", "./icon.png", "./manifest.json", "./sw.js"];
 
 self.addEventListener("install", function(e){
   e.waitUntil(
@@ -26,7 +26,7 @@ self.addEventListener("fetch", function(e){
       return fetch(e.request).then(function(resp){
         return resp;
       }).catch(function(){
-        return caches.match("./index.html?v=v10");
+        return caches.match("./index.html?v=v11").then(function(home){ return home || caches.match("./index.html"); }).then(function(home){ return home || caches.match("./"); });
       });
     })
   );

@@ -1,8 +1,9 @@
 {
-  "name": "时锚 · 效率推进器",
+  "name": "时锚 · ADHD 5分钟启动器",
   "short_name": "时锚",
-  "description": "效率推进器——完成一步即得贝壳，看得见今天推进了多少",
-  "start_url": "./index.html?v=v5",
+  "description": "给 ADHD 的 5 分钟任务启动器：微启动、摆烂模式、即时反馈和每日复盘",
+  "start_url": "./index.html?v=v11",
+  "id": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
