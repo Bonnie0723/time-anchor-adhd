@@ -1,4 +1,4 @@
-const TYPE_COLORS={"核心工作":"#d0919c","运营":"#9f8ab2","AI / 系统":"#80aa98","沟通":"#d6b26a","生活":"#b9aa83","休息":"#aaa0b5"};
+const TYPE_COLORS={"核心工作":"#000000","运营":"#333333","AI / 系统":"#555555","沟通":"#777777","生活":"#999999","休息":"#bbbbbb"};
 const PRODUCTIVE_TYPES=new Set(["核心工作","运营","AI / 系统","沟通"]);
 const DEFAULT_TASKS=[{text:"",done:false},{text:"",done:false},{text:"",done:false}];
 const MOTIVATIONS=["SAVE POINT // 先记第一笔，今天就不是空白。","+1 PROGRESS // 一点点也算推进。","FOCUS MODE // 把时间看见，专注更容易发生。","NO PERFECT RUN // 今天只要继续往前。","LOG UPDATED // 做过的事情已经被记录。"];
