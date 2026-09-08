@@ -3,113 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#d6d0c4" />
+  <meta name="theme-color" content="#f4cfd8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>专注计划</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icon-192.png" />
-  <style>
-    :root{
-      --bg:#f3f0ea; --card:#fbfaf7; --ink:#3f433f; --muted:#85877f; --line:#ded9cf;
-      --accent:#8f9889; --accent2:#b8a99a; --accent3:#8c9ca4; --accent4:#a99b9f;
-      --accent5:#b6b292; --free:#e8e4dc; --danger:#9b6d68;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
-    .wrap{max-width:760px;margin:auto;padding:18px 16px 88px}
-    .top{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin:6px 0 18px}
-    .eyebrow{font-size:13px;color:var(--muted);letter-spacing:.08em}
-    h1{font-size:28px;line-height:1.15;margin:4px 0 0;font-weight:780}
-    .date{font-size:13px;color:var(--muted)}
-    .countdown{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
-    .countdown .label{font-size:13px;color:var(--muted)}
-    .countdown .big{font-size:38px;font-weight:800;letter-spacing:-.04em;margin-top:2px}
-    .countdown .sub{font-size:13px;color:var(--muted);margin-top:2px}
-    .grid{display:grid;gap:14px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
-    .section-title{font-size:15px;font-weight:700;margin:0 0 12px}
-    .pie-row{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:center}
-    .pie{width:180px;height:180px;border-radius:50%;background:conic-gradient(var(--free) 0 100%);position:relative;margin:auto}
-    .pie::after{content:"";position:absolute;inset:34px;background:var(--card);border-radius:50%;border:1px solid var(--line)}
-    .pie-center{position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:2}
-    .pie-center b{font-size:26px}
-    .pie-center span{display:block;font-size:12px;color:var(--muted);margin-top:-5px}
-    .legend{display:grid;gap:7px;font-size:13px}
-    .legend-row{display:flex;justify-content:space-between;gap:12px}
-    .legend-left{display:flex;align-items:center;gap:7px}
-    .dot{width:9px;height:9px;border-radius:50%}
-    .progress{margin-top:12px;height:10px;border-radius:999px;background:var(--free);overflow:hidden}
-    .progress>div{height:100%;width:0;background:var(--accent);transition:.2s}
-    .progress-text{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
-    .tasks{display:grid;gap:9px}
-    .task{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center}
-    .task-num{width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:12px;color:var(--muted)}
-    input,select,button{font:inherit}
-    input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:#fffdfa;padding:11px 12px;color:var(--ink);font-size:16px}
-    .form-row{display:grid;grid-template-columns:1.5fr .9fr .8fr;gap:8px}
-    .btn{border:0;border-radius:13px;padding:12px 14px;background:var(--ink);color:#fff;font-weight:700;min-height:44px;cursor:pointer}
-    .btn.secondary{background:#ece8df;color:var(--ink);border:1px solid var(--line)}
-    .btn.danger{background:#f4e8e5;color:var(--danger);border:1px solid #e8d2cd}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .records{display:grid;gap:8px;margin-top:10px}
-    .record{display:grid;grid-template-columns:1fr auto;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
-    .record:first-child{border-top:0;padding-top:0}
-    .record-title{font-size:14px;font-weight:650}
-    .record-meta{font-size:12px;color:var(--muted);margin-top:3px}
-    .record-del{border:0;background:transparent;color:var(--danger);font-size:13px;padding:4px}
-    .empty{font-size:13px;color:var(--muted);padding:6px 0}
-    .footer-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
-    @media(max-width:560px){
-      .wrap{padding:14px 12px 82px}.top{grid-template-columns:1fr}.date{display:none}
-      h1{font-size:25px}.countdown .big{font-size:34px}
-      .pie-row{grid-template-columns:1fr}.legend{margin-top:2px}
-      .form-row{grid-template-columns:1fr 1fr}.form-row input:first-child{grid-column:1/-1}
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="wrap">
+<main class="wrap">
     <header class="top">
-      <div><h1>专注计划</h1><div class="eyebrow">今天做了什么</div></div>
+      <div><h1>专注计划 🌷</h1><div class="subhead">今天做了什么，把时间和进度看得见一点。</div></div>
       <div class="date" id="todayDate"></div>
     </header>
 
-    <section class="countdown">
-      <div class="label">如果 23:00 睡觉，今天还剩</div>
+    <section class="card countdown">
+      <div class="pill">⏰ 今日剩余时间</div>
       <div class="big" id="countdown">--小时 --分</div>
-      <div class="sub" id="daySub">把剩余时间和专注产出看见。</div>
+      <div class="small" id="daySub">不是逼自己，是把今天还剩多少看清楚。</div>
     </section>
 
     <div class="grid">
       <section class="card">
-        <h2 class="section-title">8 小时产出盘</h2>
+        <div class="section-title"><span>8 小时有效产出盘</span><span class="badge" id="focusBadge">主任务 0 / 3</span></div>
         <div class="pie-row">
-          <div class="pie" id="pie">
-            <div class="pie-center"><div><b id="doneHours">0.0h</b><span>已记录 / 8h</span></div></div>
-          </div>
+          <div class="pie" id="pie"><div class="pie-center"><div><b id="doneHours">0.0h</b><span>有效产出 / 8h</span></div></div></div>
           <div>
             <div class="legend" id="legend"></div>
             <div class="progress"><div id="progressBar"></div></div>
-            <div class="progress-text"><span id="progressText">0%</span><span>目标 8h</span></div>
+            <div class="progress-text"><span id="progressText">0%</span><span id="goalText">目标 8h</span></div>
+            <div class="motivate" id="motivate">先记第一笔，今天就不是一团雾啦 ✨</div>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2 class="section-title">今天最重要的 3 件事</h2>
-        <div class="tasks">
-          <label class="task"><span class="task-num">1</span><input id="task1" placeholder="例如：Shopee 上新 50 个" /></label>
-          <label class="task"><span class="task-num">2</span><input id="task2" placeholder="例如：广告数据复盘" /></label>
-          <label class="task"><span class="task-num">3</span><input id="task3" placeholder="例如：打包 / 采购异常处理" /></label>
-        </div>
+        <div class="section-title"><span>今天最重要的 3 件事</span><span class="badge">先抓重点</span></div>
+        <div class="task-list" id="taskList"></div>
       </section>
 
       <section class="card">
-        <h2 class="section-title">记录刚刚做了什么</h2>
+        <div class="section-title"><span>记录刚刚做了什么</span><span class="badge">只记，不计时</span></div>
         <form id="recordForm">
           <div class="form-row">
-            <input id="what" required maxlength="80" placeholder="做了什么？" />
+            <input id="what" required maxlength="80" placeholder="做了什么？例如：上新 30 款" />
             <select id="type">
               <option value="核心工作">核心工作</option>
               <option value="运营">运营</option>
@@ -127,116 +65,36 @@
             <button class="btn secondary quick" type="button" data-min="60">60 分</button>
           </div>
         </form>
-        <div class="records" id="records"></div>
+        <div class="record-list" id="records"></div>
       </section>
 
       <section class="card">
-        <h2 class="section-title">每天导出</h2>
+        <div class="section-title"><span>最近 7 天</span><span class="badge">看趋势，不看情绪</span></div>
+        <div class="day-nav"><button class="mini-btn" id="prevDay" type="button">‹ 前一天</button><div id="viewingDate" class="pill">今天</div><button class="mini-btn" id="nextDay" type="button">后一天 ›</button></div>
+        <div class="days" id="daysSummary"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title"><span>设置</span><span class="badge">轻量就好</span></div>
+        <div class="settings-row">
+          <div><div class="subhead" style="margin-bottom:8px">今日结束时间</div><input id="sleepTime" type="time" value="23:00" /></div>
+          <div><div class="subhead" style="margin-bottom:8px">有效产出目标（小时）</div><input id="goalHours" type="number" min="1" max="16" step="0.5" value="8" /></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title"><span>导出与恢复</span><span class="badge">本机保存</span></div>
         <div class="actions">
           <button class="btn secondary" id="exportCsv" type="button">导出 CSV</button>
           <button class="btn secondary" id="exportJson" type="button">导出 JSON</button>
-          <button class="btn danger" id="clearDay" type="button">清空今天</button>
+          <label class="btn secondary" for="importJson" style="display:inline-flex;align-items:center">导入 JSON</label>
+          <input id="importJson" type="file" accept="application/json" hidden />
+          <button class="btn danger" id="clearDay" type="button">清空当前日期</button>
         </div>
-        <div class="footer-note">记录保存在这台设备的浏览器本地。安装到手机主屏幕后可离线使用；跨设备不会自动同步。</div>
+        <div class="footer-note">记录保存在这台设备的浏览器本地。生活/休息会被记录，但不会计入“有效产出”。如果你清浏览器数据，建议先导出 JSON 备份。</div>
       </section>
     </div>
   </main>
-
-<script>
-const TYPES = {
-  "核心工作":"#8f9889","运营":"#b8a99a","AI / 系统":"#8c9ca4",
-  "沟通":"#a99b9f","生活":"#b6b292","休息":"#c6c2b8"
-};
-const $ = s => document.querySelector(s);
-const keyFor = d => "focus-day-"+d;
-const oldKeyFor = d => "adhd-day-"+d;
-const fmtDate = d => {
-  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
-  return `${y}-${m}-${day}`;
-};
-const today = fmtDate(new Date());
-const currentSaved = localStorage.getItem(keyFor(today));
-const legacySaved = localStorage.getItem(oldKeyFor(today));
-let state = JSON.parse(currentSaved || legacySaved || '{"tasks":["","",""],"records":[]}');
-if(!Array.isArray(state.tasks)) state.tasks=["","",""];
-if(!Array.isArray(state.records)) state.records=[];
-if(!currentSaved && legacySaved) localStorage.setItem(keyFor(today), JSON.stringify(state));
-
-function save(){
-  state.tasks=[$("#task1").value,$("#task2").value,$("#task3").value];
-  localStorage.setItem(keyFor(today), JSON.stringify(state));
-}
-function updateCountdown(){
-  const now=new Date();
-  const target=new Date(now); target.setHours(23,0,0,0);
-  let ms=target-now;
-  if(ms<=0){ $("#countdown").textContent="今天已进入收尾"; $("#daySub").textContent="23:00 已过，今天可以收尾了。"; return; }
-  const h=Math.floor(ms/3600000), min=Math.floor((ms%3600000)/60000);
-  $("#countdown").textContent=`${h}小时 ${min}分`;
-  $("#daySub").textContent=`现在 ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")} · 距离睡觉时间可见化`;
-}
-function render(){
-  save();
-  const totals={}; Object.keys(TYPES).forEach(k=>totals[k]=0);
-  state.records.forEach(r=>totals[r.type]=(totals[r.type]||0)+Number(r.minutes||0));
-  const used=Object.values(totals).reduce((a,b)=>a+b,0);
-  const cap=480, pct=Math.min(100,used/cap*100);
-  $("#doneHours").textContent=(used/60).toFixed(1)+"h";
-  $("#progressBar").style.width=pct+"%";
-  $("#progressText").textContent=Math.round(pct)+"%";
-
-  let acc=0, stops=[];
-  for(const [name,min] of Object.entries(totals)){
-    if(min<=0) continue;
-    const start=acc/cap*100; acc+=Math.min(min, Math.max(0,cap-acc)); const end=acc/cap*100;
-    stops.push(`${TYPES[name]} ${start}% ${end}%`);
-    if(acc>=cap) break;
-  }
-  if(acc<cap) stops.push(`var(--free) ${acc/cap*100}% 100%`);
-  $("#pie").style.background=`conic-gradient(${stops.join(",")})`;
-
-  $("#legend").innerHTML = Object.entries(totals)
-    .filter(([,m])=>m>0)
-    .sort((a,b)=>b[1]-a[1])
-    .map(([n,m])=>`<div class="legend-row"><span class="legend-left"><span class="dot" style="background:${TYPES[n]}"></span>${escapeHtml(n)}</span><strong>${(m/60).toFixed(1)}h</strong></div>`)
-    .join("") || '<div class="empty">还没有记录。先记第一段时间。</div>';
-
-  const list=[...state.records].reverse();
-  $("#records").innerHTML=list.length?list.map((r,idx)=>{
-    const realIndex=state.records.length-1-idx;
-    return `<div class="record"><div><div class="record-title">${escapeHtml(r.what)}</div><div class="record-meta">${escapeHtml(r.type)} · ${r.minutes} 分钟 · ${escapeHtml(r.time||"")}</div></div><button class="record-del" data-index="${realIndex}" type="button">删除</button></div>`;
-  }).join(""):'<div class="empty">你今天做过的事情会按时间出现在这里。</div>';
-  document.querySelectorAll(".record-del").forEach(btn=>btn.addEventListener("click",()=>{
-    state.records.splice(Number(btn.dataset.index),1); save(); render();
-  }));
-}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
-function download(name,text,type){
-  const blob=new Blob([text],{type}), url=URL.createObjectURL(blob), a=document.createElement("a");
-  a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
-}
-$("#todayDate").textContent=new Date().toLocaleDateString("zh-CN",{year:"numeric",month:"long",day:"numeric",weekday:"short"});
-["task1","task2","task3"].forEach((id,i)=>{ $("#"+id).value=state.tasks[i]||""; $("#"+id).addEventListener("input",save); });
-$("#recordForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  const what=$("#what").value.trim(), type=$("#type").value, minutes=Math.max(1,Math.min(720,Number($("#minutes").value)||0));
-  if(!what||!minutes) return;
-  const now=new Date();
-  state.records.push({what,type,minutes,time:now.toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit"}),createdAt:now.toISOString()});
-  $("#what").value=""; save(); render(); $("#what").focus();
-});
-document.querySelectorAll(".quick").forEach(b=>b.addEventListener("click",()=>{$("#minutes").value=b.dataset.min;}));
-$("#exportJson").addEventListener("click",()=>download(`专注计划-${today}.json`,JSON.stringify({date:today,...state},null,2),"application/json"));
-$("#exportCsv").addEventListener("click",()=>{
-  const rows=[["日期","时间","类型","事项","分钟"],...state.records.map(r=>[today,r.time,r.type,r.what,r.minutes])];
-  const csv="\ufeff"+rows.map(row=>row.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");
-  download(`专注计划-${today}.csv`,csv,"text/csv;charset=utf-8");
-});
-$("#clearDay").addEventListener("click",()=>{
-  if(confirm("确定清空今天的 3 条任务和全部记录吗？")){state={tasks:["","",""],records:[]};localStorage.removeItem(keyFor(today));localStorage.removeItem(oldKeyFor(today));location.reload();}
-});
-updateCountdown(); setInterval(updateCountdown,30000); render();
-if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{})); }
-</script>
+<script src="app.js"></script>
 </body>
 </html>
