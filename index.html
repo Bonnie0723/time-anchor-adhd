@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#d6d0c4" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <title>今天做了什么</title>
+  <title>专注计划</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icon-192.png" />
   <style>
@@ -71,14 +71,14 @@
 <body>
   <main class="wrap">
     <header class="top">
-      <div><div class="eyebrow">ADHD · TIME BLINDNESS</div><h1>今天做了什么</h1></div>
+      <div><h1>专注计划</h1><div class="eyebrow">今天做了什么</div></div>
       <div class="date" id="todayDate"></div>
     </header>
 
     <section class="countdown">
       <div class="label">如果 23:00 睡觉，今天还剩</div>
       <div class="big" id="countdown">--小时 --分</div>
-      <div class="sub" id="daySub">把剩余时间看见，不靠脑内估算。</div>
+      <div class="sub" id="daySub">把剩余时间和专注产出看见。</div>
     </section>
 
     <div class="grid">
@@ -118,7 +118,7 @@
               <option value="生活">生活</option>
               <option value="休息">休息</option>
             </select>
-            <input id="minutes" required type="number" min="1" max="720" step="5" value="30" inputmode="numeric" aria-label="分钟" />
+            <input id="minutes" required type="number" min="1" max="720" step="1" value="30" inputmode="numeric" aria-label="分钟" />
           </div>
           <div class="actions">
             <button class="btn" type="submit">+ 记一笔</button>
@@ -148,15 +148,19 @@ const TYPES = {
   "沟通":"#a99b9f","生活":"#b6b292","休息":"#c6c2b8"
 };
 const $ = s => document.querySelector(s);
-const keyFor = d => "adhd-day-"+d;
+const keyFor = d => "focus-day-"+d;
+const oldKeyFor = d => "adhd-day-"+d;
 const fmtDate = d => {
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
   return `${y}-${m}-${day}`;
 };
 const today = fmtDate(new Date());
-let state = JSON.parse(localStorage.getItem(keyFor(today)) || '{"tasks":["","",""],"records":[]}');
+const currentSaved = localStorage.getItem(keyFor(today));
+const legacySaved = localStorage.getItem(oldKeyFor(today));
+let state = JSON.parse(currentSaved || legacySaved || '{"tasks":["","",""],"records":[]}');
 if(!Array.isArray(state.tasks)) state.tasks=["","",""];
 if(!Array.isArray(state.records)) state.records=[];
+if(!currentSaved && legacySaved) localStorage.setItem(keyFor(today), JSON.stringify(state));
 
 function save(){
   state.tasks=[$("#task1").value,$("#task2").value,$("#task3").value];
@@ -166,7 +170,7 @@ function updateCountdown(){
   const now=new Date();
   const target=new Date(now); target.setHours(23,0,0,0);
   let ms=target-now;
-  if(ms<=0){ $("#countdown").textContent="今天已进入收尾"; $("#daySub").textContent="23:00 已过，别再用‘还有很多时间’欺骗自己。"; return; }
+  if(ms<=0){ $("#countdown").textContent="今天已进入收尾"; $("#daySub").textContent="23:00 已过，今天可以收尾了。"; return; }
   const h=Math.floor(ms/3600000), min=Math.floor((ms%3600000)/60000);
   $("#countdown").textContent=`${h}小时 ${min}分`;
   $("#daySub").textContent=`现在 ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")} · 距离睡觉时间可见化`;
@@ -195,7 +199,7 @@ function render(){
     .filter(([,m])=>m>0)
     .sort((a,b)=>b[1]-a[1])
     .map(([n,m])=>`<div class="legend-row"><span class="legend-left"><span class="dot" style="background:${TYPES[n]}"></span>${escapeHtml(n)}</span><strong>${(m/60).toFixed(1)}h</strong></div>`)
-    .join("") || '<div class="empty">还没有记录。先记第一段 15–30 分钟。</div>';
+    .join("") || '<div class="empty">还没有记录。先记第一段时间。</div>';
 
   const list=[...state.records].reverse();
   $("#records").innerHTML=list.length?list.map((r,idx)=>{
@@ -222,14 +226,14 @@ $("#recordForm").addEventListener("submit",e=>{
   $("#what").value=""; save(); render(); $("#what").focus();
 });
 document.querySelectorAll(".quick").forEach(b=>b.addEventListener("click",()=>{$("#minutes").value=b.dataset.min;}));
-$("#exportJson").addEventListener("click",()=>download(`ADHD-${today}.json`,JSON.stringify({date:today,...state},null,2),"application/json"));
+$("#exportJson").addEventListener("click",()=>download(`专注计划-${today}.json`,JSON.stringify({date:today,...state},null,2),"application/json"));
 $("#exportCsv").addEventListener("click",()=>{
   const rows=[["日期","时间","类型","事项","分钟"],...state.records.map(r=>[today,r.time,r.type,r.what,r.minutes])];
   const csv="\ufeff"+rows.map(row=>row.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");
-  download(`ADHD-${today}.csv`,csv,"text/csv;charset=utf-8");
+  download(`专注计划-${today}.csv`,csv,"text/csv;charset=utf-8");
 });
 $("#clearDay").addEventListener("click",()=>{
-  if(confirm("确定清空今天的 3 条任务和全部记录吗？")){state={tasks:["","",""],records:[]};localStorage.removeItem(keyFor(today));location.reload();}
+  if(confirm("确定清空今天的 3 条任务和全部记录吗？")){state={tasks:["","",""],records:[]};localStorage.removeItem(keyFor(today));localStorage.removeItem(oldKeyFor(today));location.reload();}
 });
 updateCountdown(); setInterval(updateCountdown,30000); render();
 if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{})); }
