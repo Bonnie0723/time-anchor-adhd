@@ -1,33 +1,5 @@
-// 时锚 service worker —— 离线缓存
-var CACHE = "time-anchor-v11";
-var ASSETS = ["./", "./index.html", "./index.html?v=v11", "./icon.svg", "./icon.png", "./manifest.json", "./sw.js"];
-
-self.addEventListener("install", function(e){
-  e.waitUntil(
-    caches.open(CACHE).then(function(c){ return c.addAll(ASSETS); })
-      .then(function(){ self.skipWaiting(); })
-      .catch(function(){})
-  );
-});
-
-self.addEventListener("activate", function(e){
-  e.waitUntil(
-    caches.keys().then(function(keys){
-      return Promise.all(keys.filter(function(k){ return k !== CACHE; }).map(function(k){ return caches.delete(k); }));
-    }).then(function(){ self.clients.claim(); })
-  );
-});
-
-self.addEventListener("fetch", function(e){
-  if (e.request.method !== "GET") return;
-  e.respondWith(
-    caches.match(e.request).then(function(r){
-      if (r) return r;
-      return fetch(e.request).then(function(resp){
-        return resp;
-      }).catch(function(){
-        return caches.match("./index.html?v=v11").then(function(home){ return home || caches.match("./index.html"); }).then(function(home){ return home || caches.match("./"); });
-      });
-    })
-  );
-});
+const CACHE='adhd-time-v2';
+const ASSETS=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
+self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('./index.html')))));

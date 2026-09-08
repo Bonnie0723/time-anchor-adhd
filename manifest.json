@@ -1,18 +1,14 @@
 {
-  "name": "时锚 · ADHD 5分钟启动器",
-  "short_name": "时锚",
-  "description": "给 ADHD 的 5 分钟任务启动器：微启动、摆烂模式、即时反馈和每日复盘",
-  "start_url": "./index.html?v=v11",
-  "id": "./",
+  "name": "今天做了什么 · ADHD 时间盲点",
+  "short_name": "今天做了什么",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#FAFAF7",
-  "theme_color": "#0F6E56",
+  "background_color": "#f3f0ea",
+  "theme_color": "#d6d0c4",
+  "description": "把今天剩余时间、8小时产出、主要任务和时间记录可视化。",
   "icons": [
-    { "src": "icon.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
-    { "src": "icon.png", "sizes": "any", "type": "image/png", "purpose": "maskable" }
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
