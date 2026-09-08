@@ -3,9 +3,9 @@
   "short_name": "专注计划",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f3ead7",
-  "theme_color": "#4b3c5a",
-  "description": "像素风专注计划：记录今天剩余时间、有效产出、重点任务和每日记录。",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "黑白像素风专注计划：记录今天剩余时间、有效产出、重点任务和每日记录。",
   "icons": [
     {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
     {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}
