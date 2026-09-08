@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#f4cfd8" />
+  <meta name="theme-color" content="#4b3c5a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>专注计划</title>
@@ -14,37 +14,41 @@
 <body>
 <main class="wrap">
     <header class="top">
-      <div><h1>专注计划 🌷</h1><div class="subhead">今天做了什么，把时间和进度看得见一点。</div></div>
+      <div>
+        <div class="pixel-kicker">FOCUS PLAN // DAILY LOG</div>
+        <h1>专注计划</h1>
+        <div class="subhead">今天做了什么，把时间和进度看得见。</div>
+      </div>
       <div class="date" id="todayDate"></div>
     </header>
 
     <section class="card countdown">
-      <div class="pill">⏰ 今日剩余时间</div>
+      <div class="pill">■ 今日剩余时间</div>
       <div class="big" id="countdown">--小时 --分</div>
-      <div class="small" id="daySub">不是逼自己，是把今天还剩多少看清楚。</div>
+      <div class="small" id="daySub">把今天还剩多少看清楚。</div>
     </section>
 
     <div class="grid">
       <section class="card">
-        <div class="section-title"><span>8 小时有效产出盘</span><span class="badge" id="focusBadge">主任务 0 / 3</span></div>
+        <div class="section-title"><span>有效产出盘</span><span class="badge" id="focusBadge">QUEST 0 / 3</span></div>
         <div class="pie-row">
-          <div class="pie" id="pie"><div class="pie-center"><div><b id="doneHours">0.0h</b><span>有效产出 / 8h</span></div></div></div>
+          <div class="pie" id="pie"><div class="pie-center"><div><b id="doneHours">0.0h</b><span>OUTPUT / 8h</span></div></div></div>
           <div>
             <div class="legend" id="legend"></div>
             <div class="progress"><div id="progressBar"></div></div>
             <div class="progress-text"><span id="progressText">0%</span><span id="goalText">目标 8h</span></div>
-            <div class="motivate" id="motivate">先记第一笔，今天就不是一团雾啦 ✨</div>
+            <div class="motivate" id="motivate">SAVE POINT // 先记第一笔，今天就不是空白。</div>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <div class="section-title"><span>今天最重要的 3 件事</span><span class="badge">先抓重点</span></div>
+        <div class="section-title"><span>今天最重要的 3 件事</span><span class="badge">MAIN QUEST</span></div>
         <div class="task-list" id="taskList"></div>
       </section>
 
       <section class="card">
-        <div class="section-title"><span>记录刚刚做了什么</span><span class="badge">只记，不计时</span></div>
+        <div class="section-title"><span>记录刚刚做了什么</span><span class="badge">MANUAL LOG</span></div>
         <form id="recordForm">
           <div class="form-row">
             <input id="what" required maxlength="80" placeholder="做了什么？例如：上新 30 款" />
@@ -69,13 +73,13 @@
       </section>
 
       <section class="card">
-        <div class="section-title"><span>最近 7 天</span><span class="badge">看趋势，不看情绪</span></div>
+        <div class="section-title"><span>最近 7 天</span><span class="badge">HISTORY</span></div>
         <div class="day-nav"><button class="mini-btn" id="prevDay" type="button">‹ 前一天</button><div id="viewingDate" class="pill">今天</div><button class="mini-btn" id="nextDay" type="button">后一天 ›</button></div>
         <div class="days" id="daysSummary"></div>
       </section>
 
       <section class="card">
-        <div class="section-title"><span>设置</span><span class="badge">轻量就好</span></div>
+        <div class="section-title"><span>设置</span><span class="badge">SYSTEM</span></div>
         <div class="settings-row">
           <div><div class="subhead" style="margin-bottom:8px">今日结束时间</div><input id="sleepTime" type="time" value="23:00" /></div>
           <div><div class="subhead" style="margin-bottom:8px">有效产出目标（小时）</div><input id="goalHours" type="number" min="1" max="16" step="0.5" value="8" /></div>
@@ -83,7 +87,7 @@
       </section>
 
       <section class="card">
-        <div class="section-title"><span>导出与恢复</span><span class="badge">本机保存</span></div>
+        <div class="section-title"><span>导出与恢复</span><span class="badge">BACKUP</span></div>
         <div class="actions">
           <button class="btn secondary" id="exportCsv" type="button">导出 CSV</button>
           <button class="btn secondary" id="exportJson" type="button">导出 JSON</button>
@@ -91,7 +95,7 @@
           <input id="importJson" type="file" accept="application/json" hidden />
           <button class="btn danger" id="clearDay" type="button">清空当前日期</button>
         </div>
-        <div class="footer-note">记录保存在这台设备的浏览器本地。生活/休息会被记录，但不会计入“有效产出”。如果你清浏览器数据，建议先导出 JSON 备份。</div>
+        <div class="footer-note">生活 / 休息会被记录，但不会计入有效产出。数据保存在本机浏览器；清理浏览器数据前建议先导出 JSON。</div>
       </section>
     </div>
   </main>
